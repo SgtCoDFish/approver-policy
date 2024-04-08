@@ -56,14 +56,21 @@ forgotten by users that have to configure their `CertificateRequestPolicy` RBAC.
 
 ## Upgrading After This Change
 
-If a user has already set a custom value for `approveSignerNames`, no action is required.
+Choose your scenario below, to determine the impact this change has on your configuration.
 
-Otherwise, users upgrading must choose to either accept the new default or to manually reset the old default.
+### 1 - Already have `approveSignerNames` set
 
-If the user accepts the new default then no action is required. This will be the case for most users.
+No action is required.
 
-If the user doesn't want the new default, they need to take action by setting the following `values.yaml` file
-at install time:
+### 2 - Using chart default values & accept new design
+
+No action is required. 
+This will be the case for most users.
+
+### 3 - Using chart default values & you do not accept the new design
+
+**Action required.**
+Set the following `approveSignerName` key in your `values.yaml` file at install or upgrade time:
 
 ```yaml
 approveSignerNames:
